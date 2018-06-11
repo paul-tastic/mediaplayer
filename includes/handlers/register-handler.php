@@ -28,9 +28,11 @@
 		$password = cleanUpPassword($_POST['rPassword']);
 		$password2 = cleanUpPassword($_POST['r2Password']);
 
-		$account->register($username, $firstname, $lastname, $email1, $email2, $password, $password2);
+		$registrationSuccessful = $account->register($username, $firstname, $lastname, $email1, $email2, $password, $password2);
 
-		// check min requirements, bad characters, etc
+		if($registrationSuccessful) {
+			header("Location: index.php");
+		}
 
 
 	}
